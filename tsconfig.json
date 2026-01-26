@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    /* 1. Configuração de Diretórios (Você tinha deixado comentado) */
+    "rootDir": "./src",           /* Onde está seu código */
+    "outDir": "./dist",           /* Onde o código JS final vai ficar */
+
+    /* 2. O Conserto do Erro */
+    "module": "commonjs",         /* Força a saída ser compatível com Node padrão */
+    "target": "es2020",           /* Versão   do JS gerado (moderno o suficiente) */
+    "verbatimModuleSyntax": false,/* DESLIGADO: Permite o TS traduzir import -> require */
+
+    /* 3. Interoperabilidade (Essencial para Express) */
+    "esModuleInterop": true,      /* Permite 'import express from "express"' funcionar */
+    "resolveJsonModule": true,    /* Permite importar arquivos .json */
+
+    /* 4. Checagem de Tipos (Mantive suas configs estritas, isso é bom!) */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true          /* Pula checagem de arquivos de definição (.d.ts) de terceiros */
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
