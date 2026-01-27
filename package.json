@@ -30,6 +30,8 @@
   },
   "homepage": "https://github.com/NicolasGMACK/auth-microservice#readme",
   "dependencies": {
+    "@types/cors": "^2.8.19",
+    "cors": "^2.8.6",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "uuid": "^13.0.0",

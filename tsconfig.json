@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     /* 1. Configuração de Diretórios (Você tinha deixado comentado) */
-    "rootDir": "./src",           /* Onde está seu código */
+   // "rootDir": "./src",           /* Onde está seu código */
     "outDir": "./dist",           /* Onde o código JS final vai ficar */
 
     /* 2. O Conserto do Erro */
@@ -19,6 +19,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true          /* Pula checagem de arquivos de definição (.d.ts) de terceiros */
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "server.ts"],
   "exclude": ["node_modules", "dist"]
 }
