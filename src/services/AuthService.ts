@@ -1,6 +1,8 @@
 import InMemoryUserRepository from "../repositories/in-memory/InMemoryUserRepository";
 import { AuthInterface } from "../schemas/AuthSchema";
 import bcrypt from 'bcrypt';
+import { generateJWT } from "./helpers/AuthHelper";
+
 class AuthService {
 
     async execute(dadosValidados: AuthInterface) {
@@ -22,7 +24,10 @@ class AuthService {
 
         dataUser.password = "Não informado por questão de segurança";
 
-        return {user: dataUser, status: true};
+        const token = generateJWT(dataUser, process.env.JWT_EXPIRES_IN as string);
+        const refreshToken = generateJWT(dataUser, process.env.JWT_REFRESH_EXPIRES_IN as string);
+
+        return {token, refreshToken};
     }
 
     async refreshToken() {
