@@ -1,5 +1,5 @@
 import { json, Request, Response } from "express";
-import { executeAuthSchema } from "../schemas/AuthSchema";
+import { executeAuthSchema, refreshTokenSchema, RefreshTokenInterface, AuthInterface } from "../schemas/AuthSchema";
 import AuthService from "../services/AuthService";
 
 const RESTRITO = {stripUnknown: true};
@@ -12,7 +12,7 @@ class AuthController {
 
             const authService = new AuthService();
 
-           const dadosValidados = await executeAuthSchema.validate(Req.body, RESTRITO);
+           const dadosValidados: AuthInterface = await executeAuthSchema.validate(Req.body, RESTRITO);
            
            const result = await authService.execute(dadosValidados);
            
@@ -26,7 +26,19 @@ class AuthController {
     }
 
     async refreshToken(Req: Request, Res: Response) {
-        Res.json({success: true});
+        try {
+
+            const authService = new AuthService();
+
+            const dadosValidados: RefreshTokenInterface = await refreshTokenSchema.validate(Req.body, RESTRITO);
+
+            const resultadoRefreshToken = await authService.refreshToken(dadosValidados);
+
+            Res.status(200).json(resultadoRefreshToken);
+
+        } catch(e: any) {
+            Res.status(400).json({error: e.message})
+        }
     }
 }
 
