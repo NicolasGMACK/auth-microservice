@@ -39,8 +39,8 @@ class AuthService {
             throw new Error('Token e refresh token inválidos!');
         }
 
-        const {name, email, phone, password}  = decodeJWT(dadosValidados.refresh_token);
-        const payload = {name, email, phone, password};
+        const {id, name, email, phone, password, user_group}  = decodeJWT(dadosValidados.refresh_token);
+        const payload = {id, name, email, phone, password, user_group};
 
         const token = generateJWT(payload, process.env.JWT_EXPIRES_IN as string);
         const refreshToken = generateJWT(payload, process.env.JWT_REFRESH_EXPIRES_IN as string);
