@@ -8,7 +8,7 @@ class InMemoryUserRepository {
         this._users = [{
             name: "VITOR",
             email: "vitor@gmail.com",
-            phone: "12996426213",
+            user_group: "1",
             password: "$2b$10$APP3VsO5KtJtV5W1TgLx6eessst9DuYiRbIaLLY6qpfGwANoAVjdW"
         }]
     }

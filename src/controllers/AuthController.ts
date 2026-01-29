@@ -40,6 +40,10 @@ class AuthController {
             Res.status(400).json({error: e.message})
         }
     }
+
+    async get(Req: Request, Res: Response) {
+        Res.json({success: true});
+    }
 }
 
 export default AuthController;
