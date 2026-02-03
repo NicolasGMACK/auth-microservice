@@ -6,15 +6,15 @@ class InMemoryUserRepository {
 
     constructor() {
         this._users = [{
-            id: '1',
+            id: 1,
             name: "VITOR",
             email: "vitor@gmail.com",
-            user_group: "1",
+            user_group: 3,
             password: "$2b$10$APP3VsO5KtJtV5W1TgLx6eessst9DuYiRbIaLLY6qpfGwANoAVjdW"
         }]
     }
 
-    async getById(id: string) {
+    async getById(id: number) {
         let user = {};
         this._users.map((item) => {
             if (item.id === id) {

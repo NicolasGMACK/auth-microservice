@@ -6,7 +6,6 @@ export const executeAuthSchema = object().shape({
 });
 
 export const refreshTokenSchema = object().shape({
-    token: string().required(),
     refresh_token: string().required()
 })
 

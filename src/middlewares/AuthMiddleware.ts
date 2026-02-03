@@ -7,10 +7,10 @@ export const AuthMiddleware = async(Req: Request, Res: Response, Next: NextFunct
     try {
     const authService = new AuthService();
     
-    const { authorization, refresh_token } = Req.headers;
+    const { refresh_token } = Req.headers;
 
-    if (authorization && refresh_token) {
-        const tokens = await authService.refreshToken({token: authorization, refresh_token: refresh_token as string});
+    if (refresh_token) {
+        const tokens = await authService.refreshToken({refresh_token: refresh_token as string});
 
         Res.set("authorization", tokens.token);
         Res.set("refresh_token", tokens.refreshToken);

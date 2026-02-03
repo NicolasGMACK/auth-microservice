@@ -11,9 +11,19 @@ export const AuthorizationMiddleware = (domain: string, permissions: string[]) =
     return async (Req: Request, Res: Response, Next: NextFunction) => {
         const id_user = Req.body;
 
-        const dataUser: any = await inMemoryUserRepository.getById(id_user);    
+        const dataUser: any = await inMemoryUserRepository.getById(Number(id_user));  
+        const dataPermission: any = permissionRepository.getPermissions(dataUser.user_group, domain);
 
-        console.log(dataUser.user_group);
-        Next();
+        permissions.map(item => {
+            if(!dataPermission.permissions.includes(item)){
+
+                Res.status(401).json({error: 'Nao autorizado'});
+            } else {
+                Next();
+            }
+
+        });
+
+        
     }
 }

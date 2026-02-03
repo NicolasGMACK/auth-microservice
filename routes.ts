@@ -10,6 +10,6 @@ router.post('/auth', authController.execute);
 router.post('/auth/refresh-token', authController.refreshToken);
 router.get("/users", AuthMiddleware, authController.get);
 
-router.get('/admin/project', AuthMiddleware, AuthorizationMiddleware('project', ['getAll']), () => console.log('eae'));
+router.get('/admin/project', AuthMiddleware, AuthorizationMiddleware('project', ['getAll']), () => console.log('fim.'));
 
 export default router;

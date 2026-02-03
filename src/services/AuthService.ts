@@ -32,11 +32,10 @@ class AuthService {
 
     async refreshToken(dadosValidados: RefreshTokenInterface) {
 
-        const verifyToken = verifyJWT(dadosValidados.token);
         const verifyRefreshToken = verifyJWT(dadosValidados.refresh_token);
         
-        if (!verifyToken && !verifyRefreshToken) {
-            throw new Error('Token e refresh token inválidos!');
+        if (!verifyRefreshToken) {
+            throw new Error('refresh token inválido!');
         }
 
         const {id, name, email, phone, password, user_group}  = decodeJWT(dadosValidados.refresh_token);
